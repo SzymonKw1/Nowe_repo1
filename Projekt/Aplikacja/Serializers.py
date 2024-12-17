@@ -15,7 +15,7 @@ class PersonSerializer(serializers.Serializer):
     # w pliku models.py SHIRT_SIZES oraz MONTHS zostały wyniesione jako stałe do poziomu zmiennych skryptu
     # (nie wewnątrz modelu)
     shirt_size = serializers.ChoiceField(choices=SHIRT_SIZES, default=SHIRT_SIZES[0][0])
-    miesiac_dodania = serializers.ChoiceField(choices=MONTHS.choices, default=MONTHS.choices[0][0])
+    month_added = serializers.ChoiceField(choices=MONTHS.choices, default=MONTHS.choices[0][0])
 
     # odzwierciedlenie pola w postaci klucza obcego
     # przy dodawaniu nowego obiektu możemy odwołać się do istniejącego poprzez inicjalizację nowego obiektu
