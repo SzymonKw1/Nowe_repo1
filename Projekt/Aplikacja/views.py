@@ -9,11 +9,14 @@ from django.http import HttpResponse, Http404
 import datetime
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
+from django.core.exceptions import PermissionDenied
+from django.contrib.auth.decorators import permission_required
 
 # określamy dostępne metody żądania dla tego endpointu
 @api_view(['GET'])
 @authentication_classes([SessionAuthentication, TokenAuthentication])
 @permission_classes([IsAuthenticated])
+@permission_required('Aplikacja.view_person')
 def person_list(request):
     
     """
@@ -27,6 +30,8 @@ def person_list(request):
 
 @api_view(['GET'])
 def person_detail(request, pk):
+    if not request.user.has_perm('Aplikacja.view_person'):
+        raise PermissionDenied()
 
     """
     :param request: obiekt DRF Request

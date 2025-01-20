@@ -28,6 +28,12 @@ class Person(models.Model):
     month_added = models.IntegerField(choices=MONTHS.choices, default=MONTHS.choices[0][0])
     team = models.ForeignKey(Team, null=True, blank=True, on_delete=models.SET_NULL)
 
+    class Meta:
+        permissions = [
+            ("change_person_owner", "Pozwala przypisać inną osobę do obiektu Person."),
+            ("change_assign_to_team", "Pozwala przypisać osobę do innej drużyny."),
+        ]
+
     def __str__(self):
         return self.name
 class Stanowisko(models.Model):
@@ -56,13 +62,13 @@ class Osoba(models.Model):
     def __str__(self):
         return f'{self.imie} {self.nazwisko}' 
 
-    
-    
-    
-    class Meta:
+class Meta:
         ordering =["nazwisko"]
         verbose_name="Osoba"
         verbose_name_plural="Osoby"
+        permissions= [
+            ("can_view_other_person", "Can view other person")
+        ]
 
 
 
