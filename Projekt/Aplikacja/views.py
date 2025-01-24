@@ -55,7 +55,7 @@ def person_detail(request, pk):
 
 
 @api_view(['PUT'])
-@authentication_classes([SessionAuthentication, BasicAuthentication])
+@authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def person_update(request, pk):
     """
@@ -98,7 +98,7 @@ def osoba_list(request):
     if request.method == 'POST':
         serializer = OsobaSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(wlasciciel = request.user)
             return Response(serializer.data, status = status.HTTP_201_CREATED)
         return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
     
