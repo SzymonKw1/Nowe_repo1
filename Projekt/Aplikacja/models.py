@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import date
 from django.utils.timezone import now
+from django.contrib.auth.models import User
 
 # deklaracja statycznej listy wyboru do wykorzystania w klasie modelu
 MONTHS = models.IntegerChoices('Miesiace', 'Styczeń Luty Marzec Kwiecień Maj Czerwiec Lipiec Sierpień Wrzesień Październik Listopad Grudzień')
@@ -35,7 +36,7 @@ class Person(models.Model):
         ]
 
     def __str__(self):
-        return self.name
+        return f"Person : {self.name}, dodana w {self.month_added}, o rozmiarze koszuli {self.shirt_size}.\n" 
 class Stanowisko(models.Model):
     nazwa = models.CharField(max_length=80, blank = False, null = False)
     opis = models.TextField(blank = False, null = False)
@@ -58,6 +59,7 @@ class Osoba(models.Model):
     plec = models.IntegerField(choices=PLCIE.choices, default=PLCIE.choices[2][0])
     stanowisko = models.ForeignKey('Stanowisko', on_delete = models.CASCADE)
     data_dodania = models.DateField(default= date.today, blank=False, null=False)
+    wlasciciel = models.ForeignKey(User, on_delete=models.CASCADE, blank = True, null = True)
     
     def __str__(self):
         return f'{self.imie} {self.nazwisko}' 
