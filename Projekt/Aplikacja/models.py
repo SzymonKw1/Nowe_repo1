@@ -68,8 +68,8 @@ class Meta:
         ordering =["nazwisko"]
         verbose_name="Osoba"
         verbose_name_plural="Osoby"
-        permissions= [
-            ("can_view_other_person", "Can view other person")
+        permissions = [
+            ("view_person_other_owner", "Pozwala zobaczyć modele Osoba innych właścicieli"),
         ]
 
 
