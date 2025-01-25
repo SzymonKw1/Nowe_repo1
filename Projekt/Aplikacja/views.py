@@ -224,4 +224,16 @@ class TeamDetail(APIView):
     def delete(self, request, pk, format=None):
         team = self.get_object(pk)
         team.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT) 
+        return Response(status=status.HTTP_204_NO_CONTENT) \
+        
+
+
+# Widok listy obiektów w formacie HTML
+def Team_list_html(request):
+    teams = Team.objects.all()
+    return render(request, "Aplikacja/team/list.html", {"teams": teams})
+
+# Widok szczegółów pojedynczego obiektu w formacie HTML
+def Team_detail_html(request, id):
+    team = get_object_or_404(Team, pk=id)
+    return render(request, "Aplikacja/team/detail.html", {"team": team})

@@ -1,0 +1,14 @@
+{% extends "Aplikacja/base.html" %}
+
+{% block title %}Lista drużyn{% endblock %}
+
+{% block content %}
+<h2>Lista drużyn</h2>
+<ul>
+    {% for team in teams %}
+        <li>
+            <a href="{% url 'team_detail' team.pk %}">{{ team.name }}</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -15,6 +15,8 @@ urlpatterns = [
     path('welcome/', views.welcome_view),
     path('persons_html/',views.person_list_html),
     path('persons_html/<int:id>/', views.person_detail_html),
+    path('team_html/', views.Team_list_html, name='team_list_html'),
+    path('team_html/<int:id>/', views.Team_detail_html, name='team_detail_html'),
     path("stanowisko/<int:pk>/members/", views.StanowiskoMemberView.as_view()),
     path('api/logout/', views.LogoutView.as_view(), name='api_logout'),
     path('team/<int:pk>/', views.TeamDetail.as_view(),  name='team_detail'),
