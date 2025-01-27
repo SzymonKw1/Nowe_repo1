@@ -4,7 +4,5 @@
 
 {% block content %}
 <h2>{{ team.name }}</h2>
-<p><strong>Miasto:</strong> {{ team.city }}</p>
-<p><strong>Rok założenia:</strong> {{ team.founded }}</p>
-<a href="{% url 'team_list' %}">Powrót do listy drużyn</a>
+<a href="{% url 'team_list_html' %}">Powrót do listy drużyn</a>
 {% endblock %}

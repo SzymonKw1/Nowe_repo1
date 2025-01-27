@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>{% block title %}{% endblock %}</title>
-        <link href="{% static "css/folder_aplikacji.css" %}" rel="stylesheet">
+        <link href="{% static "css/Aplikacja.css" %}" rel="stylesheet">
     </head>
     <body>
         <div id="header" >
@@ -16,7 +16,7 @@
         <div id="sidebar">
             <p>Panel boczny</p>
         </div>
-        {% if perms.folder_aplikacji.delete_person %}
+        {% if perms.Aplikacja.delete_person %}
         <button>Delete</button>
         {% endif %}
     </body>

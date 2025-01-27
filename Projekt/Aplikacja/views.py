@@ -16,6 +16,7 @@ from django.contrib.auth.decorators import permission_required
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth.decorators import permission_required, login_required
 from django.contrib.auth import logout
+from django.shortcuts import get_object_or_404
 
 class LogoutView(APIView):
     permission_classes = [IsAuthenticated]
